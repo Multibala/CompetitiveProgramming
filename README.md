@@ -1,2 +1,2 @@
 # CompetitiveProgramming
-Solving Codeforces problems
+Solving Codeforces, problems
