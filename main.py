@@ -18,18 +18,6 @@ INF  = float("inf")
 
 
 
-for _ in range(II()):
-    n = II()
-    temp = FA(5,set())
-    for i in range(n):
-        l = LI()
-        for j in range(5):
-            if l[j] == 1:
-                temp[j].add(j)
-
-    temp.sort()
-
-    print(['NO','YES'][temp[-1]>=n//2 and temp[-2] >= n//2])
-    
+print("YERBOL")
 
     
