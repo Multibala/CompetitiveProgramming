@@ -39,34 +39,56 @@ def isPrime(n):
             return False
     return True
 
-n = II()
-vac = defaultdict(int)
-names = []
-for _ in range(n):
-    a = SI().split(',')
-    vac[a[0]] = int(a[1])
+def mfs(dir,r,c,mp):
+    if r>=0 and c>=0 and r<len(mp) and c<len(mp[0]):
+
+        if mp[r][c] == '.':
+            mp[r][c] = dir
+            return True
     
+    return False
 
-mm = defaultdict(list)
-k = II()
-for i in range(k):
-    a = SI().split(',')
-    mm[a[1]].append((int(a[2]),-int(a[3]),i,a[0]))
+def move(r,c,mp):
+
+    moves = [[r,c]]
+    temp = []
+    while len(moves):
+        for m in moves:
+            r,c = m[0],m[1]
+            if mfs('L',r,c - 1,mp):
+                temp.append([r,c-1])
+            if mfs('R',r,c + 1,mp):
+                temp.append([r,c+1])
+            if mfs('D',r + 1,c,mp):
+                temp.append([r+1,c])
+            if mfs('U',r - 1,c,mp):
+                temp.append([r-1,c])
+        moves = temp.copy()
+        temp.clear()
 
 
-for v in vac:
-    mm[v].sort(reverse=True)
-    k = 0
-    while vac[v]:
-        names.append(mm[v][k][3])
-        vac[v] -= 1
-        k += 1
-
-names.sort()
-
-print(*names,sep='\n')
 
 
+
+
+n,m = MI()
+mp = []
+x0,y0 = -1,-1
+for i in range(n):
+    a = list(SI())
+    if 'S' in a:
+        x0 = a.index('S')
+        y0 = i
+    mp.append(a)
+
+boll = True
+move(y0,x0,mp)
+
+    
+for m in mp:
+    print(*m,sep='')
+
+                
                     
 
 
